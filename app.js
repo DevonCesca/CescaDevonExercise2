@@ -8,20 +8,20 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html');
 
     let path = './views/';
-//begin modifcation for each url
-    if(req.url === '/'){
+    //begin modifcation for each url
+    if (req.url === '/') {
         //left blank because not required
-    } else if (req.url === '/contact'){
+    } else if (req.url === '/contact') {
         path = path + 'contact.html';
-    } else if (req.url === '/about'){
+    } else if (req.url === '/about') {
         path = path + 'about.html';
     } else {
         res.statusCode = 404;
         path = path + '404.html';
     }
-//read the file
+    //read the file
     fs.readFile(path, (err, data) => {
-        if(err) {
+        if (err) {
             console.log(err);
         } else {
             res.write(data);
